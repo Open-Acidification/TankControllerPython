@@ -27,7 +27,7 @@ To run in a local environment with mocked devices (with the UI State Machine int
 
 ### Update Python Virtual Environment
 
-Run `pipenv install` in the terminal to get the latest dependencies and update the lock file.
+Run `pipenv install` in the terminal to get the latest dependencies and update the lockfile.
 
 ### Virtual Environment
 
