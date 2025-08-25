@@ -15,11 +15,13 @@ def run():
     titrator = Titrator()
 
     if mock_config.MOCK_ENABLED:
-        thread = threading.Thread(target=run_gui, args=[titrator], daemon=True)
+        # Run titrator loop in a background thread, GUI on main thread
+        thread = threading.Thread(target=titrator.loop, daemon=True)
         thread.start()
-
-    while True:
-        titrator.loop()
+        run_gui(titrator)
+    else:
+        while True:
+            titrator.loop()
 
 
 def run_gui(titrator):
