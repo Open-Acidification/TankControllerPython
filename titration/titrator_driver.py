@@ -10,17 +10,17 @@ from titration.titrator import Titrator
 
 def run():
     """
-    The function that drives sets up threading for the Titrator and GUI
+    The function that sets up threading for the Titrator and GUI
     """
     titrator = Titrator()
+    
+    # Always run titrator loop in a background thread
+    thread = threading.Thread(target=titrator_loop_forever, args=(titrator,), daemon=True)
+    thread.start()
 
+    # Run GUI on main thread if mock mode is enabled
     if mock_config.MOCK_ENABLED:
-        # Run titrator loop in a background thread, GUI on main thread
-        thread = threading.Thread(target=run_loop(titrator), daemon=True)
-        thread.start()
         run_gui(titrator)
-    else:
-        run_loop(titrator)
 
 
 def run_gui(titrator):
@@ -29,10 +29,9 @@ def run_gui(titrator):
     """
     GUI(titrator)
 
-
-def run_loop(titrator):
+def titrator_loop_forever(titrator):
     """
-    The function that drives the Alkalinity Titrator's loop
+    The function that runs the Titrator loop forever
     """
     while True:
         titrator.loop()
