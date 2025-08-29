@@ -47,6 +47,19 @@ To run in a local environment with mocked devices (with the UI State Machine int
 ``` sh
 ./run_gui.sh
 ```
+
+### Update Python Virtual Environment
+
+Run `pipenv install` in the terminal to get the latest dependencies and update the lockfile.
+
+### Virtual Environment
+
+```sh
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install --user pipenv
+```
+
 ## Testing
 
 To perform Pytest tests for the devices and UI states.
