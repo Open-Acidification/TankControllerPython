@@ -35,7 +35,7 @@ class GUI:
         # Initialize the GUI Frame
         self.root = tk.Tk()
         self.root.geometry("280x200")
-        self.root.title("Alkalinity Titrator")
+        self.root.title("Tank Controller")
         self.root.configure(background="black")
         self.root.columnconfigure(0, weight=1)
         self.root.rowconfigure(0, weight=1)

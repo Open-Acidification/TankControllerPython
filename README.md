@@ -12,12 +12,35 @@ Update the `TankController` code from C++ to Python and run on a Raspberry Pico.
 
 ## Requirements
 
-The system should have Python and pipenv.
-The development version also needs Tkinter which can be found in python3-tk for Ubuntu.
+To set up and run this project, the system must meet the following requirements:
 
-## Developer Instructions
+- **Python**: The project requires Python to run. Python provides the runtime for the scripts and the GUI components.  
+- **pip**: Python's package installer is needed to install and manage dependencies.  
+- **pipenv**: Used for managing project dependencies and creating isolated virtual environments.  
+- **Tkinter**: Required for the GUI components of the application. Tkinter comes with Python (as `python3-tk`) and is used to build and display the UI.
 
-### Run in Local Environment
+## Windows Developer Instructions
+
+Test Python version:  
+- `python -V`  
+This command prints the installed Python version.
+
+Upgrade pip:  
+- `pip install --upgrade pip`  
+- `pip --version`  
+The first command upgrades pip to the latest version, and the second verifies the installed version.
+
+Install pipenv (tool for dependencies and virtual environments):  
+- `pip install pipenv`
+- `pipenv --version` 
+- `pipenv install`
+This installs or updates all dependencies defined in the Pipfile and updates the Pipfile.lock.
+
+Verify Tkinter installation:  
+- `python -m tkinter`  
+A small GUI window should appear if Tkinter is installed correctly.
+
+## Run in Local Environment
 
 To run in a local environment with mocked devices (with the UI State Machine integrated)
 
