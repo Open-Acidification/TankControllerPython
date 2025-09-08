@@ -10,65 +10,47 @@ LCD_HEIGHT = 4
 
 class LiquidCrystal:
     """
-    The class for the mock of the Sunfire LCD 20x04 Char Display
+    Generalized mock class for character LCD displays of any width and height.
     """
 
     def __init__(self):
         """
-        The function to initialize the gui lcd
+        Initialize the mock LCD with configurable width and height.
         """
         self.cols = LCD_WIDTH
         self.rows = LCD_HEIGHT
 
-        self.lcd_lines = [None, None, None, None]
-        self.lcd_line_styles = [None, None, None, None]
+        self.lcd_lines = [None] * self.rows
+        self.lcd_line_styles = [None] * self.rows
 
     def print(self, message, line, style="left"):
         """
-        The function to send a string to the GUI LCD
+        Send a string to the mock LCD at the given line (1-based) and style.
         """
         if style == "left":
             style = "w"
         elif style == "right":
             style = "e"
 
-        if line == 1:
-            self.lcd_lines[0] = message
-            self.lcd_line_styles[0] = style
-        elif line == 2:
-            self.lcd_lines[1] = message
-            self.lcd_line_styles[1] = style
-        elif line == 3:
-            self.lcd_lines[2] = message
-            self.lcd_line_styles[2] = style
-        elif line == 4:
-            self.lcd_lines[3] = message
-            self.lcd_line_styles[3] = style
+        idx = line - 1
+        if 0 <= idx < self.rows:
+            self.lcd_lines[idx] = message
+            self.lcd_line_styles[idx] = style
 
     def get_line(self, line):
         """
-        The function to get the lcd line message
+        Get the message for the given line (1-based).
         """
-        if line == 1:
-            return self.lcd_lines[0]
-        if line == 2:
-            return self.lcd_lines[1]
-        if line == 3:
-            return self.lcd_lines[2]
-        if line == 4:
-            return self.lcd_lines[3]
+        idx = line - 1
+        if 0 <= idx < self.rows:
+            return self.lcd_lines[idx]
         return "ERROR"
 
     def get_style(self, line):
         """
         The function to get the lcd line message
         """
-        if line == 1:
-            return self.lcd_line_styles[0]
-        if line == 2:
-            return self.lcd_line_styles[1]
-        if line == 3:
-            return self.lcd_line_styles[2]
-        if line == 4:
-            return self.lcd_line_styles[3]
+        idx = line - 1
+        if 0 <= idx < self.rows:
+            return self.lcd_line_styles[idx]
         return "ERROR"
